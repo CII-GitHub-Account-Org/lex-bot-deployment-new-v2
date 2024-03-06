@@ -19,19 +19,11 @@ resources:
       Type: "AWS::Lex::Bot"
       Properties:
         Name: "OrderFlowers"
-        AbortStatement:
-          Messages:
-            - 
-              Content: "Sorry, I am not able to assist at this time"
-              ContentType: "PlainText"
-        ClarificationPrompt:
-          MaxAttempts: 1
-          Messages:
-            - 
-              Content: "I didn't understand that. Can you rephrase?"
-              ContentType: "PlainText"
+        Description: "An example bot"
         IdleSessionTTLInSeconds: 300
+        Intents:
+          - IntentName: "OrderFlowers"
+            IntentVersion: "$LATEST"
         VoiceId: "Salli"
-        ProcessBehavior: "BUILD"
         Locale: "en-US"
         ChildDirected: false

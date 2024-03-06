@@ -18,7 +18,7 @@ resources:
     LexBot:
       Type: "AWS::Lex::Bot"
       Properties:
-        BotName: "OrderFlowers"
+        Name: "OrderFlowers"
         AbortStatement:
           Messages:
             - 
@@ -28,14 +28,10 @@ resources:
           MaxAttempts: 1
           Messages:
             - 
-              Content: "I didn't understand you, what would you like to do?"
+              Content: "I didn't understand that. Can you rephrase?"
               ContentType: "PlainText"
         IdleSessionTTLInSeconds: 300
-        Intents:
-          - 
-            IntentName: "OrderFlowers"
-            IntentVersion: "$LATEST"
-        Locale: "en-US"
-        ProcessBehavior: "BUILD"
         VoiceId: "Salli"
-        Checksum: ""
+        ProcessBehavior: "BUILD"
+        Locale: "en-US"
+        ChildDirected: false

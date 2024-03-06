@@ -1,0 +1,10 @@
+{
+    "description": null,
+    "identifier": "WZAT1QMRFT",
+    "name": "callbackPhoneNumberUpdate-test",
+    "version": "DRAFT",
+    "dataPrivacy": {
+        "childDirected": false
+    },
+    "idleSessionTTLInSeconds": 300
+}

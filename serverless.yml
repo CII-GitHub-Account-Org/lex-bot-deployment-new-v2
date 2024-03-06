@@ -21,3 +21,6 @@ resources:
         Name: "lex-bot-deployment-test"
         Description: "An example bot"
         IdleSessionTTLInSeconds: 300
+        RoleArn: "arn:aws:iam::750344256621:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_lex-bot-deployment-test-role"
+        DataPrivacy: 
+          ChildDirected: false

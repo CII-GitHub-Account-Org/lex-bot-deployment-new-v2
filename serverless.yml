@@ -18,8 +18,8 @@ resources:
     LexBot:
       Type: "AWS::Lex::Bot"
       Properties:
-        Name: "lex-bot-deployment-test"
-        Description: "An example bot"
+        Name: "lex-bot-deployment-test" # Name of the bot
+        Description: "An example bot" # Description of the bot
         IdleSessionTTLInSeconds: 300
         RoleArn: "arn:aws:iam::750344256621:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_lex-bot-deployment-test-role"
         DataPrivacy: 

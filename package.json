@@ -1,0 +1,12 @@
+{
+  "name": "lex-bot-deployment",
+  "version": "1.0.0",
+  "description": "A project to deploy a Lex bot using GitHub Actions and the Serverless Framework",
+  "main": "serverless.yml",
+  "scripts": {
+    "deploy": "npx serverless deploy"
+  },
+  "dependencies": {
+    "serverless": "^2.64.1"
+  }
+}

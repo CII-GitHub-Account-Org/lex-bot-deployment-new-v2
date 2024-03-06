@@ -1,0 +1,39 @@
+name: Deploy Lex Bot
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Exit with success
+        run: exit 0
+  deploy_qa:
+    needs: build
+    runs-on: windows-latest
+    permissions:
+      id-token: write # Needed to authenticate with GitHub Packages
+      contents: read # Needed to read the contents of the repository
+    environment:
+      name: qa
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18
+
+      - name: configure aws credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: arn:aws:iam::750344256621:role/CII-GitHub-Account-IAM-Role
+          role-duration-seconds: 900 # optional, defaults to 3600 seconds
+          aws-region: us-east-1 # use your region here.
+
+      - name: Deploy Lex Bot
+        run: npx serverless deploy --stage qa

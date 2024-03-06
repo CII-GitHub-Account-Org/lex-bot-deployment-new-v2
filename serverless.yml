@@ -1,0 +1,20 @@
+service: lex-bot-deployment
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'lex:*'
+      Resource: '*'
+
+custom:
+  botDefinition: ${file(src/bot-definition.json)}
+
+resources:
+  Resources:
+    LexBot:
+      Type: 'AWS::Lex::Bot'
+      Properties: ${self:custom.botDefinition}

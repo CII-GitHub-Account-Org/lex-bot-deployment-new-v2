@@ -21,15 +21,15 @@ resources:
         RoleArn: "arn:aws:iam::750344256621:role/aws-service-role/lexv2.amazonaws.com/AWSServiceRoleForLexV2Bots_lex-bot-deployment-test-role"
         DataPrivacy: 
           ChildDirected: ${file(src/callbackPhoneNumberUpdate/Bot.json):dataPrivacy.childDirected}
-    LexBotLocale:
-      Type: "AWS::Lex::BotLocale"
-      Properties:
-        BotId: ${file(src/callbackPhoneNumberUpdate/Bot.json):botId}
-        LocaleId: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):localeId}
-        Description: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):description}
-    LexBotIntent:
-      Type: "AWS::Lex::BotIntent"
-      Properties:
-        BotId: ${file(src/callbackPhoneNumberUpdate/Bot.json):botId}
-        IntentId: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/Intents/FallbackIntent/Intent.json):intentId}
-        Description: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/Intents/FallbackIntent/Intent.json):description}
+      LocaleSettings:
+        - LocaleId: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):identifier}
+          VoiceSettings:
+            VoiceId: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):voiceSettings.voiceId}
+            Engine: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):voiceSettings.engine}
+          NluConfidenceThreshold: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):nluConfidenceThreshold}
+          GenerativeAISettings:
+            BuildtimeSettings:
+              DescriptiveBotBuilderSpecification:
+                Enabled: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):generativeAISettings.buildtimeSettings.descriptiveBotBuilderSpecification.enabled}
+                BedrockModelSpecification:
+                  ModelArn: ${file(src/callbackPhoneNumberUpdate/BotLocales/en_US/BotLocale.json):generativeAISettings.buildtimeSettings.descriptiveBotBuilderSpecification.bedrockModelSpecification.modelArn}

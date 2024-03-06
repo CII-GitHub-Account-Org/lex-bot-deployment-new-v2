@@ -18,12 +18,6 @@ resources:
     LexBot:
       Type: "AWS::Lex::Bot"
       Properties:
-        Name: "OrderFlowers"
+        Name: "lex-bot-deployment-test"
         Description: "An example bot"
         IdleSessionTTLInSeconds: 300
-        Intents:
-          - IntentName: "OrderFlowers"
-            IntentVersion: "$LATEST"
-        VoiceId: "Salli"
-        Locale: "en-US"
-        ChildDirected: false

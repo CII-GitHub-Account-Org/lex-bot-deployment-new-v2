@@ -1,5 +1,5 @@
 {
-    "description": null,
+    "description": "This is a test for the callbackPhoneNumberUpdate event. It is triggered when the user updates their phone number", 
     "identifier": "WZAT1QMRFT",
     "name": "callbackPhoneNumberUpdate-test",
     "version": "DRAFT",

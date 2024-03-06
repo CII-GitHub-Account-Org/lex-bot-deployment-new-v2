@@ -10,11 +10,32 @@ provider:
         - 'lex:*'
       Resource: '*'
 
-custom:
-  botDefinition: ${file(src/bot-definition.json)}
+# custom:
+#   botDefinition: ${file(src/bot-definition.json)}
 
 resources:
   Resources:
     LexBot:
-      Type: 'AWS::Lex::Bot'
-      Properties: ${self:custom.botDefinition}
+      Type: "AWS::Lex::Bot"
+      Properties:
+        BotName: "OrderFlowers"
+        AbortStatement:
+          Messages:
+            - 
+              Content: "Sorry, I am not able to assist at this time"
+              ContentType: "PlainText"
+        ClarificationPrompt:
+          MaxAttempts: 1
+          Messages:
+            - 
+              Content: "I didn't understand you, what would you like to do?"
+              ContentType: "PlainText"
+        IdleSessionTTLInSeconds: 300
+        Intents:
+          - 
+            IntentName: "OrderFlowers"
+            IntentVersion: "$LATEST"
+        Locale: "en-US"
+        ProcessBehavior: "BUILD"
+        VoiceId: "Salli"
+        Checksum: ""

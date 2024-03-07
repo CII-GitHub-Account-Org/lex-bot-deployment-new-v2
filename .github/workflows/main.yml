@@ -21,10 +21,10 @@ jobs:
       name: qa
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2 # Checkout the code in the repository
 
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v2 # Set up Node.js 18.x
         with:
           node-version: 18
 
